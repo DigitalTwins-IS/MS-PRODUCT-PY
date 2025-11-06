@@ -7,6 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
 from src.routers import products_router
+from src.models.database import Base, engine
+from src.models.product import Product  # Importar modelo para que se registre en Base.metadata
 from .config import settings
 
 # Crear aplicación FastAPI
@@ -67,6 +69,13 @@ async def root_health():
 @app.on_event("startup")
 async def startup_event():
     """Evento de inicio de la aplicación"""
+    # Crear tablas si no existen (solo crea las que faltan, no sobrescribe)
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("✅ Tablas de base de datos verificadas/creadas correctamente")
+    except Exception as e:
+        print(f"⚠️  Advertencia al inicializar tablas: {e}")
+    
     print(f"🚀 {settings.APP_NAME} v{settings.APP_VERSION} iniciado")
     print(f"📚 Documentación: http://{settings.SERVICE_HOST}:{settings.SERVICE_PORT}/docs")
     print(f"🗂️ Prefijo API: {settings.API_PREFIX}")
