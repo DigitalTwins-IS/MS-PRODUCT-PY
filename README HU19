@@ -1,0 +1,89 @@
+HU19 — Análisis de Oportunidades de Mercado
+
+> Módulo que permite al administrador analizar disponibilidad y demanda de productos/servicios para identificar oportunidades estratégicas dentro del sistema Digital Twins.
+
+---
+
+## 📌 Descripción de la Historia de Usuario
+**Como** administrador del sistema,  
+**Quiero** ver un análisis de oportunidades de mercado,  
+**Para** tomar decisiones estratégicas de abastecimiento, expansión y mejora de servicios.
+
+---
+
+## 🎯 Objetivos
+- Identificar brechas entre demanda y disponibilidad
+- Detectar tendencias por zonas o usuarios
+- Generar oportunidades de mejora en el catálogo de servicios
+- Facilitar decisiones informadas
+
+---
+
+## 🚀 Funcionalidades Implementadas
+
+| Código | Funcionalidad | Estado |
+|--------|---------------|-------|
+| HU19-F1 | Obtener datos del sistema (inventario/demanda) | ✔ En desarrollo |
+| HU19-F2 | Calcular indicadores de oportunidades | ✔ En desarrollo |
+| HU19-F3 | Visualizar información en gráficos y tablas | ✔ En desarrollo |
+| HU19-F4 | Alertas de brechas críticas | 🔄 Pendiente |
+
+> Este módulo se encuentra en su **primera fase funcional**.
+
+---
+
+## 📌 Proceso de Análisis
+
+1️⃣ Recolección de datos del backend  
+2️⃣ Procesamiento de información y cálculo de tendencias  
+3️⃣ Clasificación en categorías de riesgo/oportunidad  
+4️⃣ Visualización en el frontend mediante panel gráfico  
+
+---
+
+## 🧩 Endpoints Propuestos
+
+> Podrán variar según consolidación del modelo final
+
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| GET | `/market/opportunities` | Lista de indicadores |
+| GET | `/market/top-missing-products` | Ítems más demandados sin disponibilidad |
+| GET | `/market/stats/zone/{city}` | Tendencias por región o zona |
+
+Ejemplo de respuesta:
+```json
+[
+  {
+    "producto": "Medicamento X",
+    "zona": "Bogotá",
+    "demanda_estimada": 120,
+    "disponibilidad": 25,
+    "oportunidad": "Alta"
+  }
+]
+📊 Representación Visual (Mockup)
+mermaid
+Copiar código
+graph LR
+A[Datos del sistema] --> B[Procesamiento y análisis]
+B --> C[Indicadores]
+C --> D[UI con gráficas y oportunidades]
+🧪 Casos de Prueba Iniciales
+ID	Prueba	Resultado Esperado	Estado
+CP19-01	Consultar oportunidades	Lista generada	🟡
+CP19-02	Visualización gráfica	UI correcta	🟡
+CP19-03	Filtrar por zona	Información filtrada	🟡
+
+🟡 = En validación
+
+🏁 Criterios de Aceptación (1ra fase)
+✔ Consultas de oportunidades disponibles
+✔ Datos visualizados en interfaz básica
+✔ Información útil para la toma de decisiones
+
+📌 Funciones avanzadas de machine learning → etapa futura
+
+👤 Responsable
+Nombre	Rol
+Maryerifer Adriana Castro Ramos	Diseño, Desarrollo Front + Back
